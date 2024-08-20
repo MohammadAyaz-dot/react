@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Square from "./Square";
 
+// The Board component is fully controlled by the props passed to it by the Game component. You need to implement the handlePlay function in the Game component to get the game working again.
 export default function Board({xIsNext,square,onPlay}){
   
 
@@ -18,9 +19,9 @@ export default function Board({xIsNext,square,onPlay}){
     }
 
     const handleClick =(i)=>{
-        const nextSquare =square.slice(i)
+        const nextSquare =square.slice()
         
-        if(square[i] || calculateWinner(square)) return; // Early Return if the square already have value OR Someone Win
+        if(calculateWinner(nextSquare) || nextSquare[i]) return; // Early Return if the square already have value OR Someone Win
         if(xIsNext)
         {
             nextSquare[i]="X"
@@ -38,6 +39,7 @@ export default function Board({xIsNext,square,onPlay}){
 
     return (
         <>
+        <div className="status">{status}</div>
         <div className="board-row">
             {/* we use anonymous arrow function in onSquareClick because => if we use handleClick(0) Directly with parameter 0 it calls automatically and we want handleClick to be run only when someone click, otherwise we trap inside INFINITE Rerender because every time APP re-render handleClick(0) call again and again  */}
           <Square value={square[0]} onSquareClick={()=>handleClick(0)} ></Square>  {}
@@ -54,7 +56,7 @@ export default function Board({xIsNext,square,onPlay}){
           <Square value={square[7]}  onSquareClick={()=>handleClick(7)} ></Square>
           <Square value={square[8]}  onSquareClick={()=>handleClick(8)} ></Square>
         </div>
-        {status}
+      
         </>
     )
    
