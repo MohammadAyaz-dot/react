@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Board from './component/Board'
+import Game from './component/Game'
 
 
 
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-    <Board></Board>
+     <Game></Game>
     </>
   )
 }
