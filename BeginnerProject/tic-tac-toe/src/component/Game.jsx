@@ -30,7 +30,7 @@ export default function Game(){
 
         setHistory(nextHistory)
         setCurrentMove(nextHistory.length-1)
-        setXIsNext(!xIsNext);
+        // setXIsNext(!xIsNext);
     }
 
     //7 Next, update the jumpTo function inside Game to update that currentMove. You’ll also set xIsNext to true if the number that you’re changing currentMove to is even.
