@@ -1,14 +1,15 @@
 import { useState } from "react";
 import Square from "./Square";
 
-export default function Board(){
+export default function Board({xIsNext,square,onPlay}){
   
 
     // To check whose move is next
-    const [xIsNext, setXIsNext] = useState(true);
-    const[squares,setSquares] = useState(Array(9).fill(null));
+    // const [xIsNext, setXIsNext] = useState(true);
+    // const[squares,setSquares] = useState(Array(9).fill(null));
+    // Commeting it beacuse state is now lifted to GAME component
 
-    const winner = calculateWinner(squares);
+    const winner = calculateWinner(square);
     let status;
     if (winner) {
       status = "Winner: " + winner;
@@ -17,9 +18,9 @@ export default function Board(){
     }
 
     const handleClick =(i)=>{
-        const nextSquare =[...squares]
+        const nextSquare =square.slice(i)
         
-        if(squares[i] || calculateWinner(squares)) return; // Early Return if the square already have value OR Someone Win
+        if(square[i] || calculateWinner(square)) return; // Early Return if the square already have value OR Someone Win
         if(xIsNext)
         {
             nextSquare[i]="X"
@@ -27,27 +28,31 @@ export default function Board(){
         else{
             nextSquare[i]="O"
         }
-        setSquares(nextSquare);
-        setXIsNext(prev=>!prev)
+
+        // Commeting it beacuse state is now lifted to GAME component
+        // setSquares(nextSquare);
+        // setXIsNext(prev=>!prev)
+
+        onPlay(nextSquare)
     }
 
     return (
         <>
         <div className="board-row">
             {/* we use anonymous arrow function in onSquareClick because => if we use handleClick(0) Directly with parameter 0 it calls automatically and we want handleClick to be run only when someone click, otherwise we trap inside INFINITE Rerender because every time APP re-render handleClick(0) call again and again  */}
-          <Square value={squares[0]} onSquareClick={()=>handleClick(0)} ></Square>  {}
-          <Square value={squares[1]}  onSquareClick={()=>handleClick(1)} ></Square>
-          <Square value={squares[2]}  onSquareClick={()=>handleClick(2)} ></Square>
+          <Square value={square[0]} onSquareClick={()=>handleClick(0)} ></Square>  {}
+          <Square value={square[1]}  onSquareClick={()=>handleClick(1)} ></Square>
+          <Square value={square[2]}  onSquareClick={()=>handleClick(2)} ></Square>
         </div>
         <div className="board-row">
-          <Square value={squares[3]} onSquareClick={()=>handleClick(3)}></Square>
-          <Square value={squares[4]} onSquareClick={()=>handleClick(4)} ></Square>
-          <Square value={squares[5]} onSquareClick={()=>handleClick(5)} ></Square>  
+          <Square value={square[3]} onSquareClick={()=>handleClick(3)}></Square>
+          <Square value={square[4]} onSquareClick={()=>handleClick(4)} ></Square>
+          <Square value={square[5]} onSquareClick={()=>handleClick(5)} ></Square>  
         </div>
         <div className="board-row">
-          <Square value={squares[6]}  onSquareClick={()=>handleClick(6)} ></Square>
-          <Square value={squares[7]}  onSquareClick={()=>handleClick(7)} ></Square>
-          <Square value={squares[8]}  onSquareClick={()=>handleClick(8)} ></Square>
+          <Square value={square[6]}  onSquareClick={()=>handleClick(6)} ></Square>
+          <Square value={square[7]}  onSquareClick={()=>handleClick(7)} ></Square>
+          <Square value={square[8]}  onSquareClick={()=>handleClick(8)} ></Square>
         </div>
         {status}
         </>
