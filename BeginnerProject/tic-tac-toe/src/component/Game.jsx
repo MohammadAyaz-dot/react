@@ -36,7 +36,7 @@ export default function Game(){
     //7 Next, update the jumpTo function inside Game to update that currentMove. You’ll also set xIsNext to true if the number that you’re changing currentMove to is even.
     function jumpTo(nextMove){
         setCurrentMove(nextMove);
-        setXIsNext(nextMove % 2 === 0);
+        // setXIsNext(nextMove % 2 === 0);
     }
 
     // 5
