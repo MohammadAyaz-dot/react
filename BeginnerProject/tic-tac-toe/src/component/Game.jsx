@@ -10,7 +10,7 @@ export default function Game(){
     //2 Notice how [Array(9).fill(null)] is an array with a single item, which itself is an array of 9 nulls.
     const[history,setHistory] =useState([Array(9).fill(null)])
 
-console .log(history)
+    // console .log(history)
 
     //6 Before you can implement jumpTo, you need the Game component to keep track of which step the user is currently viewing. To do this, define a new state variable called currentMove, defaulting to 0:
     const [currentMove, setCurrentMove] = useState(0);
