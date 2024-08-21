@@ -1,6 +1,6 @@
 
 
-export default function ParametresField({numAllowed , charAllowed, setCharAllowed, setNumAllowed}){
+export default function ParametresField({range,setRange,numAllowed , charAllowed, setCharAllowed, setNumAllowed}){
 
     return(
         <>
@@ -9,10 +9,12 @@ export default function ParametresField({numAllowed , charAllowed, setCharAllowe
 
               <div className="lenght flex align-middle gap-2 border border-black p-4">
               
-                <label className="font-bold">Range</label>
+                <label className="font-bold">Range{range}</label>
                  <input type="range"
+                 value={range}
                  min={5}
-                 max={25} />
+                 max={25}
+                 onChange={e=> setRange(e.target.value)} />
                 </div>
                
                 <div className="num flex align-middle gap-1 border border-black p-4">
