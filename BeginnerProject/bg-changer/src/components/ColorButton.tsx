@@ -14,6 +14,6 @@ export default function ColorButton(props:any){
                 fontWeight:"bold"
 
             }
-        }> {props.color}</button>
+        } onClick={props.onChangeBg}> {props.color}</button>
     )
 }

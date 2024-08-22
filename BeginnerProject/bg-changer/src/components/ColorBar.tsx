@@ -12,7 +12,6 @@ export default function ColorBar(props :any ):any{
             border:"1px solid #ccc",
             flexWrap:"wrap",
             borderRadius:"15px",
-            marginBottom:"30px"
         }}>
         {props.children}
         </div>
