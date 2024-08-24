@@ -24,7 +24,7 @@ const fileExplorer ={
                         {
                             id:5,
                             name:"hello.hmtl",
-                            isFolder:true,
+                            isFolder:false,
                             items:[]
                         }
                        
@@ -65,3 +65,5 @@ const fileExplorer ={
         }
     ]
 }
+
+export default fileExplorer;

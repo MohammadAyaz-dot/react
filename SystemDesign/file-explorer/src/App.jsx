@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import viteLogo from '/vite.svg'
 import FolderUI from './components/FolderUI'
-
+import fileExplorer from './data/folderData'
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState(fileExplorer)
+  // console.log(data)
 
   return (
     <>
-    <FolderUI></FolderUI>
+    <FolderUI folderData ={data}></FolderUI>
     </>
   )
 }

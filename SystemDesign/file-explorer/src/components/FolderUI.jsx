@@ -1,30 +1,26 @@
+import { useState } from "react"
 
-export default function FolderUI({folderName}){
-
+export default function FolderUI({folderData}){
+    const [visible,setVisible] = useState(false)
+    // console.log(folderData)
+    if(folderData.isFolder)
     return(
-        <div style={{
-            padding:"16px",
-            margin:"10px",
-            background:"gray",
-            display:"flex",
-            justifyContent:"space-between",
-            width:"30%",
-            borderRadius:"20px"
-        }}>
-            <div>
-                
-                <img src="../src/assets/download.png" alt="" style={{
-                    width:"20px",
-                    height:"20px",
-                    paddingRight:"8px"
-                }}/>
-                 root
+        <div style={{ marginTop:"5px"}}>
+            <div className="folder" onClick={()=> setVisible(!visible)} style={{ cursor:"pointer" , background:"gray"}}>
+                 <span> 📁 {folderData.name}</span>
             </div>
 
-            <div>
-                <button>Folder +</button>
-                <button>File +</button>
-            </div>
+            <div style={{
+                paddingLeft:"25px",
+                display:visible?"block":"none"
+            }}>
+          
+                 {folderData.items.map((data)=> <FolderUI key={data.id} folderData={data}/>)}
+          </div>
+           
+       
         </div>
     )
+    else
+    return(  <span className="file">📄 {folderData.name}</span>)
 }
