@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function FolderUI({folderData}){
+export default function FolderUI({folderData,handleInsertNode}){
     const [visible,setVisible] = useState(false)
     const [showInput,setShowInput] = useState({
         isFolder:null,
@@ -11,6 +11,13 @@ export default function FolderUI({folderData}){
         setVisible(true)
         e.stopPropagation();
         setShowInput({visible:true,isFolder})
+    }
+
+    const onAddFolder = (e)=>{
+        if(e.keyCode === 13 && e.target.value){
+            handleInsertNode(folderData.id,e.target.value,showInput.isFolder)
+            setShowInput({...showInput,visible:false})
+        }
     }
     
     // console.log(folderData)
@@ -35,6 +42,7 @@ export default function FolderUI({folderData}){
                             <span>{showInput.isFolder ? "📁" : "📄"}</span>
                             <input className="inputContainer-input"
                             type="text"
+                            onKeyDown={onAddFolder}
                             onBlur={()=>{setShowInput({...showInput,visible:false})}}
                             autoFocus />
 
@@ -42,7 +50,13 @@ export default function FolderUI({folderData}){
                     )
                 }
           
-                 {folderData.items.map((data)=> <FolderUI key={data.id} folderData={data}/>)}
+                 {folderData.items.map((data)=> 
+                 <FolderUI
+                   key={data.id}
+                   folderData={data}
+                   handleInsertNode={handleInsertNode}
+                    />
+                    )}
           </div>
            
        
