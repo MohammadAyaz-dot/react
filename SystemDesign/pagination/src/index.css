@@ -22,3 +22,24 @@
   object-fit: cover;
   margin-bottom: 3px;
 }
+
+.pagination{
+  margin: 15px 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination__selected{
+  background-color: rgb(220,220,220);
+}
+
+.pagination > span{
+  padding: 15px 20px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.pagination__disable{
+  opacity: 0;
+}
