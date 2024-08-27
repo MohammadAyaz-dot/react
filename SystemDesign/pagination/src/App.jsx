@@ -3,30 +3,34 @@ import { useEffect, useState } from 'react'
 function App() {
   const [products,setProducts] = useState([])
   const [page , setPage] = useState(1)
+  const [totalPages , setTotalPages]= useState(0)
+  
   const getProducts =async()=>{
-    const data = await fetch(`https://dummyjson.com/products/?limit=100`);
+    const data = await fetch(`https://dummyjson.com/products/?limit=10&skip=${10 *page -10}`);
     const jsonData = await data.json();
 
     if(jsonData && jsonData.products){
-      setProducts(jsonData.products)
+      setTotalPages(Math.floor(jsonData.total /10))
+      setProducts(jsonData.products)   
     }
   }
 
   useEffect(()=>{
     getProducts();
-  },[])
+  },[page])
 
   const selectPageHandler =(selectedPage)=>{
-    if(selectedPage>0 && selectedPage<=10)
+    if(selectedPage>0 && selectedPage<=totalPages)
     setPage(selectedPage);
   }
+  console.log(totalPages)
 
   return (
     
      <div>  
       {
         products.length > 0 && ( <div className="products">
-          {products.slice(page*10-10,page*10).map((prod)=> <span className='product__single' key={prod.id}>
+          {products.map((prod)=> <span className='product__single' key={prod.id}>
             <img src={prod.thumbnail} alt={prod.title} />
             <span>{prod.title}</span>
           </span>)}
@@ -42,7 +46,7 @@ function App() {
         </span>
       
         {
-          [...Array(products.length/10)].map((_,i)=>(
+          [...Array(10)].map((_,i)=>(
             <span
             className={page===i+1? "pagination__selected":""}
              key={i} onClick={()=>selectPageHandler(i+1)}>{(i+1)}</span>
@@ -50,7 +54,7 @@ function App() {
         }
        
         <span 
-              className={page>=10? "pagination__disable":""}
+              className={page >totalPages? "pagination__disable":""}
               onClick={()=>selectPageHandler(page+1)}
               >▶️
         </span>
