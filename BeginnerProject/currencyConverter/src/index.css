@@ -1,3 +1,10 @@
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:darkkhaki
+}
 
 .container{
   width: 400px;
@@ -9,6 +16,7 @@
   margin: 10px 5px 10px 10px ;
   border: 2px solid #ccc;
   height: 80px;
+  background-color: white;
 }
 
 .container__firstDiv{
@@ -25,4 +33,24 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  
+}
+
+.container__secondDiv >select{
+  border-radius: 10px;
+  background: rgb(244, 241, 241);
+  font-weight: 200;
+  padding: 3px;
+  text-align: center;
+  cursor: pointer;
+  
+
+}
+
+.converterContainer{
+  /* border: 2px solid black; */
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(10, 69, 81, 0.3)
 }

@@ -1,7 +1,8 @@
 
 # CONRENCY CONVERTER
 
-https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/$ind.json
+## API To Get Currency Conversion Rate
+https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/inr.json
 ## MOCK UP
 ![alt text](<Screenshot 2024-08-28 070335.png>)
 
