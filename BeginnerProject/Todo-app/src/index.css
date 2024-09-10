@@ -1,0 +1,38 @@
+.addTodoContainer{
+  border: 2px solid black;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.inputBox{
+  width: 70%;
+  padding: 16px;
+  margin-right: 6px;
+  border-radius: 10px;
+  border: none;
+}
+
+.btn{
+  padding: 16px 20px;
+  border-radius: 15px;
+  background-color: rgb(104, 190, 104);
+  border: none;
+  box-shadow: 1px 7px 5px black;
+  margin-left: 5px;
+}
+
+.btn:hover{
+  box-shadow: 0 0 0;
+
+}
+
+.todoLi{
+    border: 2px solid black;
+    margin-bottom: 10px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
